@@ -1,0 +1,20 @@
+formatters:
+  gelf:
+    (): janeiro_log.formatter.gelf.GelfFormatter
+    allowed_reserved_attrs:
+      - name
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: TRACE
+    formatter: gelf
+    stream: ext://sys.stdout
+loggers:
+  '':
+    level: INFO
+    handlers: [console]
+    propagate: no
+  janeiro_config:
+    level: TRACE
+    handlers: [console]
+    propagate: no
